@@ -18,35 +18,47 @@ export default function PrestamoForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 p-4">
+    <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 rounded-2xl shadow-md border w-full">
+      <h2 className="text-2xl font-semibold text-gray-800">Registrar Préstamo de Libro</h2>
+
       <div>
-        <label>ID Estudiante:</label>
+        <label className="block text-sm font-medium text-gray-700 mb-1">ID Estudiante</label>
         <input
           type="number"
           value={idEstudiante}
           onChange={(e) => setIdEstudiante(e.target.value)}
-          className="border p-2 rounded w-full"
+          className="w-full border border-gray-300 p-3 rounded-md text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="0"
           required
         />
       </div>
+
       <div>
-        <label>ID Libro:</label>
+        <label className="block text-sm font-medium text-gray-700 mb-1">ID Libro</label>
         <input
           type="number"
           value={idLibro}
           onChange={(e) => setIdLibro(e.target.value)}
-          className="border p-2 rounded w-full"
+          className="w-full border border-gray-300 p-3 rounded-md text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="0"
           required
         />
       </div>
+
       <button
         type="submit"
-        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 disabled:bg-blue-300"
+        className="bg-blue-500 hover:bg-blue-600 text-white px-5 py-2 rounded-md transition duration-200 disabled:bg-blue-300"
         disabled={cargando}
       >
         {cargando ? 'Registrando...' : 'Registrar Préstamo'}
       </button>
-      {mensaje && <p className="mt-4 font-semibold">{mensaje}</p>}
+
+      {mensaje && (
+        <div className="mt-4 text-blue-700 font-medium">
+          {mensaje}
+        </div>
+      )}
     </form>
+
   );
 }

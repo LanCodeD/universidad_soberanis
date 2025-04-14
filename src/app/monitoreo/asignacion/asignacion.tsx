@@ -21,38 +21,45 @@ export default function AsignarProfesor() {
   };
 
   return (
-    <div className="p-8 max-w-lg mx-auto">
-      <h2 className="text-xl font-bold mb-4">Asignar Profesor a Horario</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
+   <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 rounded-2xl shadow-md border w-full">
+        <h2 className="text-2xl font-semibold text-gray-800">Asignar Profesor a Horario</h2>
+  
         <div>
-          <label>ID del Profesor:</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">ID del Profesor</label>
           <input
             type="number"
             value={profesorId}
             onChange={(e) => setProfesorId(e.target.value)}
-            className="border p-2 rounded w-full"
+            className="w-full border border-gray-300 p-3 rounded-md text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500"
+            placeholder="0"
             required
           />
         </div>
+  
         <div>
-          <label>ID del Horario:</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">ID del Horario</label>
           <input
             type="number"
             value={horarioId}
             onChange={(e) => setHorarioId(e.target.value)}
-            className="border p-2 rounded w-full"
+            className="w-full border border-gray-300 p-3 rounded-md text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500"
+            placeholder="0"
             required
           />
         </div>
+  
         <button
           type="submit"
-          className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 disabled:bg-green-300"
+          className="bg-green-500 hover:bg-green-600 text-white px-5 py-2 rounded-md transition duration-200 disabled:bg-green-300"
           disabled={enviando}
         >
           {enviando ? 'Asignando...' : 'Asignar'}
         </button>
-      </form>
-      {mensaje && <p className="mt-4 font-semibold">{mensaje}</p>}
-    </div>
-  );
+  
+        {mensaje && (
+          <p className="mt-4 text-green-700 font-medium">
+            {mensaje}
+          </p>
+        )}
+      </form>  );
 }
